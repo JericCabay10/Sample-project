@@ -1,0 +1,169 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body, html {
+    height: 100%;
+    background: linear-gradient(135deg, #74ABE2, #5563DE);
+    color: #333;
+}
+
+/* Header / Logo */
+header {
+    display: flex;
+    align-items: center;
+    padding: 25px 50px; /* increased padding */
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 0 0 20px 20px;
+}
+
+header img {
+    width: 80px;   /* slightly bigger */
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 25px;
+    object-fit: cover;
+}
+
+header h1 {
+    font-size: 36px; /* increased from 28px */
+    color: #222;
+}
+
+/* Main section */
+main {
+    display: flex;
+    justify-content: center;
+    padding: 80px 20px; /* more spacing */
+}
+
+.section {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    padding: 50px;  /* increased padding */
+    max-width: 600px; /* bigger card */
+    width: 100%;
+    text-align: center;
+}
+
+.service-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.service-header h2 {
+    font-size: 42px; /* bigger heading */
+    color: #4a73ff;
+}
+
+.section p {
+    font-size: 22px; /* larger paragraph text */
+    margin: 10px 0;
+}
+
+button {
+    padding: 14px 28px; /* bigger button */
+    font-size: 18px;    /* larger text */
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #4a73ff;
+    color: #fff;
+}
+
+button:hover {
+    background: #2d56e0;
+    transform: translateY(-2px);
+}
+
+/* Overlay form */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.form-container {
+    background: rgba(255,255,255,0.95);
+    border-radius: 20px;
+    padding: 50px;  /* increased padding */
+    width: 450px;   /* wider form */
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;      /* larger spacing */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.form-container h2 {
+    text-align: center;
+    color: #4a73ff;
+    margin-bottom: 20px;
+    font-size: 32px;  /* bigger title */
+}
+
+input[type=text], input[type=email] {
+    padding: 14px;       /* bigger input */
+    font-size: 18px;     /* bigger text inside input */
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    transition: border 0.3s ease;
+}
+
+input[type=text]:focus, input[type=email]:focus {
+    border: 2px solid #4a73ff;
+    outline: none;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 28px;
+    }
+
+    .service-header h2 {
+        font-size: 32px;
+    }
+
+    .section p {
+        font-size: 20px;
+    }
+
+    button {
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+
+    .form-container {
+        width: 90%;
+        padding: 35px;
+    }
+
+    .form-container h2 {
+        font-size: 28px;
+    }
+
+    input[type=text], input[type=email] {
+        font-size: 16px;
+        padding: 12px;
+    }
+}

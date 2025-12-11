@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Welcome to our Website</title>
+</head>
+<body>
+
+<header>
+    <img th:src="@{/images/user.jpg}" alt="User">
+    <h1>Welcome to our Website</h1>
+</header>
+
+<main>
+    <section class="section">
+        <div class="service-header">
+            <h2>Services</h2>
+            <form th:action="@{/home}" method="get">
+                <button type="submit">Lift</button>
+            </form>
+        </div>
+        <p>Web Development</p>
+        <p>SEO</p>
+
+        <button id="orderBtn">Order</button>
+    </section>
+</main>
+
+<!-- Overlay form -->
+<div id="overlayForm" class="overlay">
+    <form id="orderForm" class="form-container">
+        <h2>Place Your Order</h2>
+        <label>Name:</label>
+        <input type="text" name="name" required>
+
+        <label>Phone:</label>
+        <input type="text" name="phone" required>
+
+        <label>Email:</label>
+        <input type="email" name="email">
+
+        <label>
+            <input type="checkbox" name="billBySomeoneElse">
+            Bill made by someone else
+        </label>
+
+        <button type="submit">Submit</button>
+        <button type="button" id="closeBtn">Close</button>
+    </form>
+</div>
+
+<script th:src="@{/js/script.js}"></script>
+</body>
+</html>

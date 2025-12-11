@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #74ABE2, #5563DE);
+    color: #333;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Main container */
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 1400px; /* wider for 4 columns */
+    text-align: left;
+}
+
+/* Heading */
+h1 {
+    font-size: 40px;
+    color: #4a73ff;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Grid for orders */
+.orders-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    grid-auto-rows: minmax(120px, auto);   /* flexible row height */
+    gap: 20px;
+    width: 100%;  /* take full container width */
+}
+
+/* Order card */
+.order-card {
+    background: rgba(255,255,255,0.9);
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Labels in card */
+.order-card p strong {
+    display: inline-block;
+    width: 60px;
+}
+
+/* Back button */
+button {
+    display: block;
+    margin-top: 25px;
+    padding: 14px 28px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #4a73ff;
+    color: #fff;
+}
+
+button:hover {
+    background: #2d56e0;
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .orders-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .orders-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .orders-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+#clearOrdersBtn {
+    display: block;
+    margin-top: 15px;
+    padding: 14px 28px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background: #e04a4a; /* red color for delete */
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+#clearOrdersBtn:hover {
+    background: #c03939;
+    transform: translateY(-2px);
+}
