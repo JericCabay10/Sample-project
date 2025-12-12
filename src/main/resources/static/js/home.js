@@ -23,6 +23,9 @@ async function loadOrders() {
 loadOrders();
 
 document.getElementById("clearOrdersBtn").onclick = async () => {
-    await fetch("/api/orders", { method: "DELETE" });
+    await fetch("/api/orders", {
+    method: "DELETE"
+    });
+
     loadOrders();
 };

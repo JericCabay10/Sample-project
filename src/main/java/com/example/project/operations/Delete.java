@@ -18,7 +18,6 @@ public class Delete {
     public void clear() throws Exception {
         // Ensure folder exists
         File file = new File(storage.FILE_PATH);
-
         file.getParentFile().mkdirs();
 
         // Clear orders
