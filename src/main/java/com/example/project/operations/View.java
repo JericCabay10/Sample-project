@@ -16,13 +16,13 @@ public class View {
 
     public View(LocalStorage storage) {
         this.storage = storage;
-        new File("orders").mkdirs();
     }
 
     public List<Order> getAllOrders() throws Exception {
+        // Ensure folder exists
         File file = new File(storage.FILE_PATH);
-
         if (!file.exists()) {
+            file.getParentFile().mkdirs();
             return new ArrayList<>();
         }
 

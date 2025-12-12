@@ -13,10 +13,15 @@ public class Delete {
 
     public Delete(LocalStorage storage) {
         this.storage = storage;
-        new File("orders").mkdirs();
     }
 
     public void clear() throws Exception {
-        storage.mapper.writeValue(new File(storage.FILE_PATH), new ArrayList<>());
+        // Ensure folder exists
+        File file = new File(storage.FILE_PATH);
+
+        file.getParentFile().mkdirs();
+
+        // Clear orders
+        storage.mapper.writeValue(file, new ArrayList<>());
     }
 }

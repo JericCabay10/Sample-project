@@ -16,13 +16,18 @@ public class Create {
     public Create(View view, LocalStorage storage) {
         this.view = view;
         this.storage = storage;
-        new File("orders").mkdirs();
     }
 
     public void saveOrder(Order order) throws Exception {
+        // Ensure folder exists
+        File file = new File(storage.FILE_PATH);
+        file.getParentFile().mkdirs();
+
+        // Load existing orders
         List<Order> orders = view.getAllOrders();
         orders.add(order);
 
-        storage.mapper.writeValue(new File(storage.FILE_PATH), orders);
+        // Save orders
+        storage.mapper.writeValue(file, orders);
     }
 }
