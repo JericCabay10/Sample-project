@@ -1,32 +1,28 @@
-document.addEventListener("DOMContentLoaded", function() {
+async function loadOrders() {
+    const res = await fetch("/api/orders");
+    const orders = await res.json();
+
     const container = document.querySelector(".orders-grid");
-    const orders = JSON.parse(localStorage.getItem("orders")) || [];
+    container.innerHTML = "";
 
-    orders.forEach(order => {
-        const div = document.createElement("div");
-        div.classList.add("order-card");
-        div.innerHTML = `
-            <p><strong>Name:</strong> ${order.name}</p>
-            <p><strong>Phone:</strong> ${order.phone}</p>
-            <p><strong>Email:</strong> ${order.email}</p>
+    orders.forEach(o => {
+        const box = document.createElement("div");
+        box.classList.add("order-box");
+
+        box.innerHTML = `
+            <h3>${o.name}</h3>
+            <p>Phone: ${o.phone}</p>
+            <p>Email: ${o.email}</p>
+            <p>Bill by someone else: ${o.billBySomeoneElse ? "Yes" : "No"}</p>
         `;
-        container.appendChild(div);
+
+        container.appendChild(box);
     });
+}
 
-    // Clear all orders button
-    const clearBtn = document.getElementById("clearOrdersBtn");
-    clearBtn.addEventListener("click", () => {
-        if (confirm("Are you sure you want to delete all submitted orders?")) {
-            localStorage.removeItem("orders");       // Delete from localStorage
-            container.innerHTML = "";                // Clear the grid display
-            alert("All orders have been deleted!");
-        }
-    });
-});
+loadOrders();
 
-
-//                    // Clear all submitted orders
-//                    localStorage.removeItem("orders");
-//
-//                    // Optional: reload page to reflect changes
-//                    location.reload();
+document.getElementById("clearOrdersBtn").onclick = async () => {
+    await fetch("/api/orders", { method: "DELETE" });
+    loadOrders();
+};

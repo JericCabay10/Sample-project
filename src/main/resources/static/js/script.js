@@ -1,35 +1,51 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const orderBtn = document.getElementById("orderBtn");
     const overlay = document.getElementById("overlayForm");
     const closeBtn = document.getElementById("closeBtn");
     const form = document.getElementById("orderForm");
 
-    if (orderBtn && overlay && closeBtn && form) {
-        orderBtn.onclick = () => overlay.style.display = "flex";
-        closeBtn.onclick = () => overlay.style.display = "none";
+    if (!orderBtn || !overlay || !closeBtn || !form) return;
 
-        form.onsubmit = function(event) {
-            const billCheckbox = document.querySelector('input[name="billBySomeoneElse"]');
-            const emailInput = document.querySelector('input[name="email"]');
+    // Show overlay
+    orderBtn.onclick = () => {
+        overlay.style.display = "flex";
+    };
 
-            if (!billCheckbox.checked && emailInput.value.trim() === "") {
-                alert("Email is mandatory if bill not made by someone else");
-                event.preventDefault();
-                return false;
-            }
+    // Hide overlay
+    closeBtn.onclick = () => {
+        overlay.style.display = "none";
+        form.reset();
+    };
 
-            const name = document.querySelector('input[name="name"]').value;
-            const phone = document.querySelector('input[name="phone"]').value;
-            const email = emailInput.value || "N/A";
 
-            let orders = JSON.parse(localStorage.getItem("orders")) || [];
-            orders.push({ name, phone, email });
-            localStorage.setItem("orders", JSON.stringify(orders));
+    // Form
+    form.addEventListener("submit", async function (event) {
+        event.preventDefault();
 
+        const billCheckbox = form.billBySomeoneElse;
+        const email = form.email.value.trim();
+
+        if (!billCheckbox.checked && email === "") {
+            alert("Email is mandatory if bill not made by someone else");
+            return;
+        }
+
+        const orderData = {
+            name: form.name.value,
+            phone: form.phone.value,
+            email: email || "N/A",
+            billBySomeoneElse: billCheckbox.checked
+        };
+
+        try {
+            await saveOrder(orderData);
             alert("Submit Success!");
+
             overlay.style.display = "none";
             form.reset();
-            event.preventDefault(); // prevent page reload for demo
-        };
-    }
+        } catch (err) {
+            console.error(err);
+            alert("Failed to save order");
+        }
+    });
 });
