@@ -13,7 +13,7 @@ public class Delete {
 
     public Delete(LocalStorage storage) {
         this.storage = storage;
-        new File("local-storage").mkdirs();
+        new File("orders").mkdirs();
     }
 
     public void clear() throws Exception {

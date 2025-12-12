@@ -16,7 +16,7 @@ public class Create {
     public Create(View view, LocalStorage storage) {
         this.view = view;
         this.storage = storage;
-        new File("local-storage").mkdirs();
+        new File("orders").mkdirs();
     }
 
     public void saveOrder(Order order) throws Exception {

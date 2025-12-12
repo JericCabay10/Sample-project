@@ -16,7 +16,7 @@ public class View {
 
     public View(LocalStorage storage) {
         this.storage = storage;
-        new File("local-storage").mkdirs();
+        new File("orders").mkdirs();
     }
 
     public List<Order> getAllOrders() throws Exception {
